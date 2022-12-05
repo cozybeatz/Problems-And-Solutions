@@ -71,9 +71,31 @@ Step 5 - ran the command "service ssh status" to check the status of the ssh ser
 
 Step 6 - LO AND BEHOLD, SSH BECAME ACTIVE!!!!!!!!! and i could ssh into my ubuntu server again through putty
 
+=======================================================================================================================
+
+PROBLEM \\ FIND ONE RECORD FROM DATABASE COLLECTION
+
+SOLUTION \\ db.collection.findone();
+
+
+PROBLEM \\ FIND ONE RECORD FROM DATABASE COLLECTION AND UPDATE
+
+db.collection.findOneAndUpdate({field: "value"}, {$set:{field: "updatedValue"}})
+
+
+PROBLEM \\ REMOVE RECORD FROM DATABASE COLLECTION
+
+SOLUTION \\ db.collection.remove();
+
+
 
 =======================================================================================================================
 
+PROBLEM \\ DELETE PM2 PROCESS IN UBUNTU SERVER
+
+SOLUTION \\ pm2 delete <app_id> (eg. pm2 delete 2) 
+
+=======================================================================================================================
 
 PROBLEM \\ ADDING USER TO LINUX SERVER AND GIVING SUDO PRIVILEDGES
 
@@ -88,7 +110,6 @@ id <name> (Check for user details and if sudo is added for user)
 sudo su - <name> (Login as a new user)
 
 whoami (Check logged in user)
-
 
 mkdir ~/.ssh (Create ssh folder for authentication)
 
@@ -114,9 +135,12 @@ sudo apt upgrade (Upgrade command)
 
 // INSTALL NODE JS
 
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash - (Deprecated)
 
 sudo apt install nodejs
+
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
 
 sudo apt install build-essential
 
@@ -133,14 +157,13 @@ PASTE THE FOLLOWING COMMAND INTO THE SERVER BLOCK
 server {
 
  root /var/www/html;
-# Add index.php to the list if you are using PHP
-index index.html index.htm index.nginx-debian.html;
- server_name premiumwealthassets.com www.premiumwealthassets.com;
+ index index.html index.htm index.nginx-debian.html;
+ server_name finglobal-limited.com www.finglobal-limited.com;
 
 
  location / {
 
- proxy_pass http://localhost:3000;
+ proxy_pass http://localhost:8000;
  proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
  proxy_set_header Host $host;
  proxy_set_header X-NginX-Proxy true;
@@ -220,6 +243,16 @@ PROBLEM \\ DELETE AN SSL CERTIFICATE IN DIGITAL OCEAN DROPLET
 
 SOLUTION \\ sudo certbot delete
 
+=====================================================================================================
+
+PROBLEM \\ GENERATE SSH KEYPAIR PUTTY (_MAC)
+
+SOLUTION \\ puttygen -t rsa -b 2048 -o thekey.ppk
+
+To get the public key use the following command:
+
+puttygen -L thekey.ppk
+
 
 =====================================================================
 
@@ -280,6 +313,24 @@ RUN COMMAND mongoimport --db DATABASENAME --collection  COLLECTIONNAME --file EX
 RUN COMMAND mongoexport --db DATABASENAME --collection COLLECTIONNAME --out file.json
 =========================================================================================================================
 
+PROBLEM \\ COPY ALL CONTENTS OF A FOLDER TO ANOTHER FOLDER IN LINUX
+
+SOLUTION \\ 
+
+cp -r /<path-to-folder>/* path-to-folder
+
+=========================================================================================================================
+
+
+PROBLEM \\ COPY A FOLDER TO ANOTHER FOLDER IN LINUX
+
+SOLUTION \\ 
+
+cp -r /<path-to-folder>/ <path-to-folder>
+
+=========================================================================================================================
+
+
 PROBLEM \\ ADD PROFILE PHOTO TO A PRIVATE EMAIL ADDRESS
 
 SOLUTION \\
@@ -292,7 +343,7 @@ SOLUTION \\
 
 4. scroll down and click on the email address option
 
-5. Scroll down and you shoulkd see an alternate email option, click on it
+5. Scroll down and you should see an alternate email option, click on it
 
 6. Click on add new alternate email and add a new custom email address that you have created
 
